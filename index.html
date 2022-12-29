@@ -2420,7 +2420,8 @@
 
         .hero .holder article a,
         .hero .holder article h1,
-        .hero .holder article p {
+        .hero .holder article p, 
+        .hero .holder article div {
             position: relative;
             z-index: 2;
             opacity: 0;
@@ -2524,7 +2525,8 @@
 
         .hero.active .holder article a,
         .hero.active .holder article h1,
-        .hero.active .holder article p {
+        .hero.active .holder article p,
+        .hero.active .holder article div {
             opacity: 1;
             -webkit-transform: translateX(0) translateY(0) translateZ(0) rotate(0) scale(1, 1);
             -moz-transform: translateX(0) translateY(0) translateZ(0) rotate(0) scale(1, 1);
@@ -2559,7 +2561,8 @@
         }
 
         .hero.up .holder article h1,
-        .hero.up .holder article p {
+        .hero.up .holder article p,
+        .hero.up .holder article div {
             opacity: 0
         }
 
@@ -11863,6 +11866,426 @@
             display: none
         }
     </style>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
+
+        /* #event {
+            position: relative;
+        } */
+
+        .carousel-heading {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 120px;
+            left: 630px;
+        }
+
+        .Carousel_text_hide {
+            visibility: hidden;
+            width: 400px !important;
+            position: absolute;
+            width: 500px;
+            bottom: -10px;
+            text-align: center !important;
+        }
+
+        .Carousel_text_show>div {
+            display: block;
+        }
+
+        .Carousel_text_hide {
+            transform: translateY(28px);
+            display: none;
+        }
+
+        .Carousel_text_show>div {
+            visibility: visible;
+        }
+
+        .carousel_text {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .carousel_section_ncs {
+            height: 750px !important;
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+        }
+
+        /* set to flexbox to center the images with the indicator icons */
+
+        .carousel_section_ncs-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 320px !important;
+            height: 600px !important;
+        }
+
+        .carousel_section_ncs-item h2 {
+            margin-top: 2rem !important;
+            margin-bottom: 12px !important;
+            text-align: center !important;
+            font-size: 28px !important;
+        }
+
+        .carousel_section_ncs-item img {
+            min-width: 500px !important;
+            height: auto !important;
+            border-radius: 20px !important;
+        }
+
+        .carousel_section_ncs {
+            overflow: hidden;
+            position: relative;
+            width: 100%;
+            height: 400px;
+            -webkit-perspective: 500px;
+            perspective: 500px;
+            -webkit-transform-style: preserve-3d;
+            transform-style: preserve-3d;
+            -webkit-transform-origin: 0% 50%;
+            transform-origin: 0% 50%;
+            padding-left: 0px !important;
+            padding-right: 0px !important;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider {
+            top: 0;
+            left: 0;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider .carousel_section_ncs-fixed-item {
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 20px;
+            z-index: 1;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider .carousel_section_ncs-fixed-item.with-indicators {
+            bottom: 68px;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider .carousel_section_ncs-item {
+            width: 100%;
+            height: 100%;
+            min-height: 400px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider .carousel_section_ncs-item h2 {
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 32px;
+        }
+
+        .carousel_section_ncs.carousel_section_ncs-slider .carousel_section_ncs-item p {
+            font-size: 15px;
+        }
+
+        .carousel_section_ncs .carousel_section_ncs-item {
+            visibility: hidden;
+            width: 200px;
+            height: 200px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .carousel_section_ncs .carousel_section_ncs-item>img {
+            width: 100%;
+        }
+
+        .carousel_section_ncs .indicators {
+            position: absolute;
+            text-align: center;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0;
+        }
+
+        .carousel_section_ncs .indicators .indicator-item {
+            display: inline-block;
+            position: relative;
+            cursor: pointer;
+            height: 8px;
+            width: 8px;
+            margin: 24px 4px;
+            background-color: rgba(255, 255, 255, 0.5);
+            -webkit-transition: background-color 0.3s;
+            transition: background-color 0.3s;
+            border-radius: 50%;
+        }
+
+        .carousel_section_ncs .indicators .indicator-item.active {
+            background-color: #fff;
+        }
+
+        .carousel_section_ncs.scrolling .carousel_section_ncs-item .materialboxed,
+        .carousel_section_ncs .carousel_section_ncs-item:not(.active) .materialboxed {
+            pointer-events: none;
+        }
+
+        #event {
+            padding-top: 3rem;
+            padding-bottom: 2rem !important;
+            width: 90% !important;
+            margin: 0 auto !important;
+        }
+
+        #event>h1 {
+            margin: 1.3rem auto 0 auto !important;
+            font-size: 36px;
+        }
+
+        #carousel-event {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #carousel-event button {
+            border: none !important;
+            background-color: transparent !important;
+            cursor: pointer;
+            z-index: 10;
+        }
+
+        .Carousel_text_hide h2 {
+            margin-top: 1rem !important;
+        }
+
+        #carousel-button-left {
+            left: 60px;
+            position: absolute;
+        }
+
+        #carousel-button-right {
+            right: 60px;
+            position: absolute;
+        }
+
+        @media only screen and (max-width: 319px) {
+            .carousel_section_ncs-item img {
+                min-width: 200px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+
+            #event {
+                width: 100% !important;
+            }
+
+            .carousel_section_ncs-item {
+                width: 220px !important;
+            }
+
+            #carousel-event {
+                height: 500px !important;
+            }
+
+            .carousel_section_ncs {
+                height: 500px !important;
+            }
+
+            .carousel_section_ncs {
+                height: 500px !important;
+                padding-right: auto !important;
+                padding-left: auto !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .Carousel_text_hide {
+                width: 220px !important;
+                height: 200px !important;
+                padding: 0 !important;
+            }
+
+            .Carousel_text_hide h2 {
+                margin: 10px 0 0 0 !important;
+                padding: 0 !important;
+                font-size: 24px !important;
+            }
+
+            #carousel-button-left,
+            #carousel-button-right {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 320px) and (max-width: 374px) {
+            .carousel_section_ncs-item img {
+                min-width: 220px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+
+            #event {
+                width: 100% !important;
+            }
+
+            .carousel_section_ncs-item {
+                width: 220px !important;
+            }
+
+            #carousel-event {
+                height: 500px !important;
+            }
+
+            .carousel_section_ncs {
+                height: 500px !important;
+            }
+
+            .carousel_section_ncs {
+                height: 500px !important;
+                padding-right: auto !important;
+                padding-left: auto !important;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .Carousel_text_hide {
+                width: 220px !important;
+                height: 200px !important;
+                padding: 0 !important;
+            }
+
+            .Carousel_text_hide h2 {
+                margin: 10px 0 0 0 !important;
+                padding: 0 !important;
+                font-size: 24px !important;
+            }
+
+            #carousel-button-left,
+            #carousel-button-right {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 375px) and (max-width: 424px) {
+            .carousel_section_ncs-item img {
+                min-width: auto !important;
+                height: 300px !important;
+                border-radius: 20px !important;
+            }
+
+            #event {
+                width: 100% !important;
+            }
+
+            #carousel-event {
+                height: 700px !important;
+            }
+
+            .carousel_section_ncs-item {
+                width: 280px !important;
+            }
+
+            .carousel_section_ncs {
+                height: 650px !important;
+            }
+
+            .Carousel_text_hide {
+                width: 280px !important;
+                min-height: 250px !important;
+                padding: 0 !important;
+            }
+
+            .Carousel_text_hide h2 {
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+
+            #carousel-button-left,
+            #carousel-button-right {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 425px) and (max-width: 499px) {
+            .carousel_section_ncs-item img {
+                min-width: 220px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+
+            #event {
+                width: 100% !important;
+            }
+
+            .carousel_section_ncs {
+                height: 650px !important;
+            }
+
+            .Carousel_text_hide {
+                width: 320px !important;
+            }
+
+            #carousel-button-left,
+            #carousel-button-right {
+                display: none;
+            }
+        }
+
+        @media only screen and (min-width: 500px) {
+            .carousel_section_ncs-item img {
+                min-width: 350px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+        }
+
+        @media only screen and (min-width: 600px) {
+            .carousel_section_ncs-item img {
+                min-width: 360px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+        }
+
+        @media only screen and (min-width: 768px) and (max-width: 1440px) {
+            .carousel_section_ncs-item img {
+                min-width: 400px !important;
+                height: auto !important;
+                border-radius: 20px !important;
+            }
+
+            .carousel_section_ncs-item {
+                width: 220px !important;
+            }
+
+            .Carousel_text_hide h2 {
+                margin-top: 1rem !important;
+            }
+
+            .Carousel_text_hide {
+                width: 390px !important;
+                height: auto !important;
+            }
+        }
+
+        @media only screen and (min-width: 1441px) {
+            .carousel_section_ncs-item {
+                width: 220px !important;
+                height: auto;
+            }
+
+            .Carousel_text_hide {
+                width: 390px !important;
+            }
+        }
+    </style>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
@@ -11918,7 +12341,7 @@
         href="https://www.gocloudforce.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.gocloudforce.com%2F" />
     <link rel="alternate" type="text/xml+oembed"
         href="https://www.gocloudforce.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.gocloudforce.com%2F&amp;format=xml" />
-    <script type="text/javascript">
+    <!-- <script type="text/javascript">
         var appInsights = window.appInsights || function (a) {
             function b(a) { c[a] = function () { var b = arguments; c.queue.push(function () { c[a].apply(c, b) }) } } var c = { config: a }, d = document, e = window; setTimeout(function () { var b = d.createElement("script"); b.src = a.url || "https://az416426.vo.msecnd.net/scripts/a/ai.0.js", d.getElementsByTagName("script")[0].parentNode.appendChild(b) }); try { c.cookie = d.cookie } catch (a) { } c.queue = []; for (var f = ["Event", "Exception", "Metric", "PageView", "Trace", "Dependency"]; f.length;)b("track" + f.pop()); if (b("setAuthenticatedUserContext"), b("clearAuthenticatedUserContext"), b("startTrackEvent"), b("stopTrackEvent"), b("startTrackPage"), b("stopTrackPage"), b("flush"), !a.disableExceptionTracking) { f = "onerror", b("_" + f); var g = e[f]; e[f] = function (a, b, d, e, h) { var i = g && g(a, b, d, e, h); return !0 !== i && c["_" + f](a, b, d, e, h), i } } return c
         }({
@@ -11926,12 +12349,12 @@
         });
 
         window.appInsights = appInsights, appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView("Home", window.location.origin);
-    </script>
+    </script> -->
     <!-- DO NOT COPY THIS SNIPPET! Start of Page Analytics Tracking for HubSpot WordPress plugin v8.15.139-->
-    <script type="text/javascript" class="hsq-set-content-id" data-content-id="standard-page">
+    <!-- <script type="text/javascript" class="hsq-set-content-id" data-content-id="standard-page">
         var _hsq = _hsq || [];
         _hsq.push(["setContentType", "standard-page"]);
-    </script>
+    </script> -->
     <!-- DO NOT COPY THIS SNIPPET! End of Page Analytics Tracking for HubSpot WordPress plugin -->
 
 
@@ -11945,14 +12368,14 @@
     <style type="text/css" id="wp-custom-css"></style>
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177787285-1"></script>
+    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-177787285-1"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
         gtag('js', new Date());
 
         gtag('config', 'UA-177787285-1');
-    </script>
+    </script> -->
 
 
 </head>
@@ -12052,8 +12475,18 @@
         </div>
     </div>
 
+    <style>
+        .background-image{
+            width: 530px;
+            height: 625px;
+            background: url(./Elixir2/images/2.png);
+            position: absolute !important;
+            right: -500px;
+            /* top: -70px; */
+            bottom: -180px;
+        }
+    </style>
     <div id="sections-holder" data-speed="1200">
-
 
         <section class=" hero" data-header-color="light" data-side-nav-color="light">
             <div class="holder">
@@ -12063,6 +12496,9 @@
                         have a niche for technology. Here, we learn, explore, collaborate, and more than that, have fun.
                         Peer learning and support have always been the pillars of Elixir. Here's to experiencing many
                         "Hello World" moments together.</p>
+                    <div class="background-image">
+
+                    </div>
                 </article>
             </div>
             <!-- <a href="#" class="scroll-indicator btn"><span><i data-title="Scroll">Scroll</i></span></a> -->
@@ -12070,7 +12506,7 @@
 
         <section class=" simple" data-header-color="light" data-side-nav-color="light">
             <div class="holder">
-                <!-- <article>
+                <article>
                     <h3>Systems<br />
                         Thinking.</h3>
                     <p>We may be tech experts, but our process takes far more than technology into account. We start
@@ -12080,11 +12516,71 @@
                         is only as good as the people using it day‑to‑day.</p>
                     <a href="https://www.gocloudforce.com/our-approach/" class="btn"><span><i
                                 data-title="Explore Our Smart Process">Explore Our Smart Process</i></span></a>
+                </article>
+                <!-- <article id="event">
+                    <h1 class="text-center avenir carousel-heading">Events</h1>
+                    <div id="carousel-event">
+                        <button id="carousel-button-left" onclick="movePrevCarousel()"><img src="./assets/img/prev.png"
+                                alt=""></button>
+                        <div id="carousel_id_ncs" class="carousel_section_ncs carousel_section_ncs-slider">
+                            <div class="carousel_text blur carousel_section_ncs-item active unblur Carousel_text_show"
+                                href="#one!"
+                                style="z-index: 0; opacity: 100; visibility: visible; transform: translateX(573.5px) translateY(75px) translateX(0px) translateX(0px) translateZ(0px);">
+                                <img src="./assets/img/pull_n_merge.jpeg">
+                                <div class="Carousel_text_hide">
+                                    <h2 class="mx-auto avenirDemi">Pull n Merge</h2>
+                                    <p class="mx-auto text-muted">Hacktoberfest was bidden adieu with a mentoring
+                                        session event called Pull-N-Merge, focused on the introduction to Git and
+                                        GitHub, ways to contribute to open source, and much more.</p>
+                                </div>
+                            </div>
+                            <div class="carousel_text blur carousel_section_ncs-item" href="#two!"
+                                style="transform: translateX(573.5px) translateY(75px) translateX(320px) translateZ(-200px); z-index: -1; opacity: 199.6; visibility: visible;">
+                                <img src="./assets/img/GCCP.jpeg">
+                                <div class="Carousel_text_hide">
+                                    <h2 class="mx-auto avenirDemi">Google Cloud Carrer Practitioners</h2>
+                                    <p class="mx-auto text-muted">Get ready to fly high above the clouds to experience
+                                        cloud computing!</p>
+                                </div>
+                            </div>
+                            <div class="carousel_text blur carousel_section_ncs-item" href="#three"
+                                style="transform: translateX(573.5px) translateY(75px) translateX(640px) translateZ(-400px); z-index: -2; opacity: 199.2; visibility: visible;">
+                                <img src="./assets/img/auto_run.jpeg">
+                                <div class="Carousel_text_hide">
+                                    <h2 class="mx-auto avenirDemi" style="font-size: 24px !important;">Auto Run</h2>
+                                    <p class="mx-auto text-muted">November felt no less than a battle when 72 GFG
+                                        student chapters divided into 6 teams competed against each other in one of the
+                                        largest coding contests, AUTO-RUN.</p>
+                                </div>
+                            </div>
+                            <div class="carousel_text blur carousel_section_ncs-item" href="#four!"
+                                style="transform: translateX(573.5px) translateY(75px) translateX(-640px) translateZ(-400px); z-index: -2; opacity: 199.2; visibility: visible;">
+                                <img src="./assets/img/Clash_of_coders.jpeg">
+                                <div class="Carousel_text_hide">++
+                                    <h2 class="mx-auto avenirDemi">Clash of Coders</h2>
+                                    <p class="mx-auto text-muted">Ahoy geeks!
+                                        CodeChef ABES EC pulled in an invigorating Coding event "CLASH OF CODERS", which
+                                        inscribed the audience with ardour, keenness, and zeal to learn and code.</p>
+                                </div>
+                            </div>
+                            <div class="carousel_text blur carousel_section_ncs-item" href="#five!"
+                                style="transform: translateX(573.5px) translateY(75px) translateX(-320px) translateZ(-200px); z-index: -1; opacity: 199.6; visibility: visible;">
+                                <img src="./assets/img/Jetpack_compose.jpeg">
+                                <div class="Carousel_text_hide">
+                                    <h2 class="mx-auto avenirDemi">Jetpack Compose Camp</h2>
+                                    <p class="mx-auto text-muted">Developing apps? We're ready to make you an app
+                                        development wizard!</p>
+                                </div>
+                            </div>
+                        </div>
+                        <button id="carousel-button-right" onclick="moveNextCarousel()"><img src="./assets/img/next.png"
+                                alt=""></button>
+                    </div>
                 </article> -->
             </div>
             <!-- <a href="#" class="scroll-indicator btn"><span><i data-title="Scroll">Scroll</i></span></a> -->
         </section>
-                <style>
+                <!-- <style>
                     @import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Roboto:wght@300&display=swap');
 
                     #event {
@@ -12503,8 +12999,8 @@
                             width: 390px !important;
                         }
                     }
-                </style>
-                <article id="event">
+                </style> -->
+                <!-- <article id="event">
                     <h1 class="text-center avenir carousel-heading">Events</h1>
                     <div id="carousel-event">
                         <button id="carousel-button-left" onclick="movePrevCarousel()"><img src="./assets/img/prev.png"
@@ -12565,7 +13061,7 @@
                     </div>
                     <script src="./assets/carousel.js"></script>
                     <script src="./assets/materialize.js"></script>
-                </article>
+                </article> -->
 
         <section class="with-box light" data-header-color="light" data-side-nav-color="dark">
             <div class="holder">
@@ -13039,13 +13535,15 @@
     <script>
         var themeUrl = "https://www.gocloudforce.com/wp-content/themes/cfwp";
     </script>
+    <script src="./assets/carousel.js"></script>
+    <script src="./assets/materialize.js"></script>
 
-    <script data-minify="1" type='text/javascript'
+    <!-- <script data-minify="1" type='text/javascript'
         src='https://www.gocloudforce.com/wp-content/cache/min/1/wp-includes/js/dist/vendor/regenerator-runtime.min.js?ver=1665496143'
-        id='regenerator-runtime-js' defer></script>
-    <script data-minify="1" type='text/javascript'
+        id='regenerator-runtime-js' defer></script> -->
+    <!-- <script data-minify="1" type='text/javascript'
         src='https://www.gocloudforce.com/wp-content/cache/min/1/wp-includes/js/dist/vendor/wp-polyfill.min.js?ver=1665496143'
-        id='wp-polyfill-js'></script>
+        id='wp-polyfill-js'></script> -->
     <script type='text/javascript' id='contact-form-7-js-extra'>
         /* <![CDATA[ */
         var wpcf7 = { "api": { "root": "https:\/\/www.gocloudforce.com\/wp-json\/", "namespace": "contact-form-7\/v1" }, "cached": "1" };
@@ -13062,9 +13560,9 @@
         var leadin_wordpress = { "userRole": "visitor", "pageType": "home", "leadinPluginVersion": "8.15.139" };
 /* ]]> */
     </script>
-    <script data-minify="1" type='text/javascript'
+    <!-- <script data-minify="1" type='text/javascript'
         src='https://www.gocloudforce.com/wp-content/cache/min/1/8560265.js?ver=1665496143' async defer
-        id='hs-script-loader'></script>
+        id='hs-script-loader'></script> -->
     <script type='text/javascript'
         src='http://maps.googleapis.com/maps/api/js?key=AIzaSyBWONH8KTrFdbJa2tdmhE63UwtQ_lpxZlA&amp;ver=6.0.3'
         id='maps-js' defer></script>
@@ -13111,8 +13609,8 @@
         id='wd-asl-ajaxsearchlite-wrapper-js' defer></script>
 
     <!-- Start of HubSpot Embed Code -->
-    <script data-minify="1" type="text/javascript" id="hs-script-loader" async defer
-        src="https://www.gocloudforce.com/wp-content/cache/min/1/8560265.js?ver=1665496143"></script>
+    <!-- <script data-minify="1" type="text/javascript" id="hs-script-loader" async defer
+        src="https://www.gocloudforce.com/wp-content/cache/min/1/8560265.js?ver=1665496143"></script> -->
     <!-- End of HubSpot Embed Code -->
 
 </body>
